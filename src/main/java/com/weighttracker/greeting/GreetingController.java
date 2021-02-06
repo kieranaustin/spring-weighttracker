@@ -1,4 +1,4 @@
-package com.weighttracker.Greeting;
+package com.weighttracker.greeting;
 
 import java.util.concurrent.atomic.AtomicLong;
 

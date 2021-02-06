@@ -1,4 +1,4 @@
-package com.weighttracker.Greeting;
+package com.weighttracker.greeting;
 
 public class Greeting
 {
