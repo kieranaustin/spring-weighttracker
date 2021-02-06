@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html th:fragment="layout (template, menu)">
+
+<head>
+	<meta charset="UTF-8">
+	<title>WeightTracker</title>
+</head>
+
+<body>
+
+	<nav>
+		<div style="background:black;color:white;height:50px;">
+			<div style="padding:15px;">
+				<a th:href="@{/}" th:title="home">[Home]</a>
+				<a th:href="@{/greeting/World}" th:title="greeting">[Greeting]</a>
+			</div>
+		</div>
+	</nav>
+	
+	<div>
+		<th:block th:include="${template}" />
+	</div>
+
+</body>
+
+</html>
