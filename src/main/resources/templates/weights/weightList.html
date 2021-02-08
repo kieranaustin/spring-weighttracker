@@ -9,6 +9,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th></th>
 				<th>Date</th>
 				<th>Time</th>
 				<th>Weight</th>
@@ -16,9 +17,18 @@
 		</thead>
 		<tbody>
 			<tr th:each="weight : ${weights.weights}">
+				<td></td>
 				<td th:text="${weight.date}"></td>
 				<td th:text="${weight.time}"></td>
 				<td th:text="${weight.weight}"></td>
+			</tr>
+			<tr>
+				<form action="#" th:action="@{/weights/add}" method="post">
+					<td><button type="submit">+</button></td>
+					<td><input autofocus th:name="date" type="text"/></td>
+					<td><input th:name="time" type="text"/></td>
+					<td><input th:name="weight" type="number" step="0.1" value="73.0"/></td>
+				</form>
 			</tr>
 		</tbody>
 	</table>

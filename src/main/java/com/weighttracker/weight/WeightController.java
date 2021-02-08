@@ -21,8 +21,8 @@ public class WeightController
 	@Autowired
 	private WeightRepository weightRepository;
 	
-	@PostMapping(path="/add")
-	public @ResponseBody String addNewWeight(
+	@PostMapping("/add")
+	public String addNewWeight(
 			@RequestParam String date, 
 			@RequestParam String time, 
 			@RequestParam float weight)
@@ -34,7 +34,7 @@ public class WeightController
 		
 		weightRepository.save(w);
 		
-		return "Saved";
+		return "redirect:/weights/weights.html";
 	}
 	
 	@GetMapping("/weights.html")
