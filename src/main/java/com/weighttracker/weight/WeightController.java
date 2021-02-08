@@ -37,6 +37,14 @@ public class WeightController
 		return "redirect:/weights/weights.html";
 	}
 	
+	@PostMapping("/remove")
+	public String deleteWeight(@RequestParam Integer weightId)
+	{
+		weightRepository.deleteById(weightId);
+		
+		return "redirect:/weights/weights.html";
+	}
+	
 	@GetMapping("/weights.html")
 	public String showWeightList(Map<String, Object> model)
 	{
