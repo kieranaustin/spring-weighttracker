@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+	  th:replace="~{fragments/layout :: layout (~{::body})}">
+
+<body>
+	
+
+	<h2>Weights Graph</h2>
+	
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js">
+		// TODO: try fix source map error (404) in dygraph.min.js //# sourceMappingURL=dist/dygraph.min.js.map
+	</script>
+	<div id="dygraph-div" style="height:450px;width:800px"> </div>
+	<script type="text/javascript">
+		g = new Dygraph(
+			document.getElementById("dygraph-div"),
+			"/weights/raw/csv",
+			{
+				visibility: [false, true] // visibility flags of y-values only, first column = x-value
+			}
+		);
+	</script>
+
+</body>
+
+</html>

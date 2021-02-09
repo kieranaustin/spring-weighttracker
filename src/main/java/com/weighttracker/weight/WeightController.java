@@ -23,6 +23,8 @@ public class WeightController
 	@Autowired
 	private WeightRepository weightRepository;
 	
+	private final String REDIRECT_WEIGHT_LIST = "redirect:/weights/list.html";
+	
 	@PostMapping("/add")
 	public String addNewWeight(
 			@RequestParam String date, 
@@ -36,7 +38,7 @@ public class WeightController
 		
 		weightRepository.save(w);
 		
-		return "redirect:/weights/weights.html";
+		return REDIRECT_WEIGHT_LIST;
 	}
 	
 	@PostMapping("/remove")
@@ -44,16 +46,22 @@ public class WeightController
 	{
 		weightRepository.deleteById(weightId);
 		
-		return "redirect:/weights/weights.html";
+		return REDIRECT_WEIGHT_LIST;
 	}
 	
-	@GetMapping("/weights.html")
+	@GetMapping("/list.html")
 	public String showWeightList(Map<String, Object> model)
 	{
 		Weights weights = new Weights();
 		weights.getWeights().addAll((Collection<Weight>) this.weightRepository.findAll());
 		model.put("weights",  weights);
 		return "weights/weightList";
+	}
+	
+	@GetMapping("/graph.html")
+	public String showWeightGraph()
+	{
+		return "weights/weightGraph";
 	}
 
 	@GetMapping(path="/raw/json")

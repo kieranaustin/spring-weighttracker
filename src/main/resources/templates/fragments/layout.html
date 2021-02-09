@@ -9,11 +9,13 @@
 <body>
 
 	<nav>
-		<div style="background:black;color:white;height:50px;">
+		<div style="background:gray;color:white;height:50px;">
 			<div style="padding:15px;">
 				<a th:href="@{/}" th:title="home">[Home]</a>
 				<a th:href="@{/greeting/World}" th:title="greeting">[Greeting]</a>
-				<a th:href="@{/weights/weights.html}" th:title="weights">[Weights]</a>
+				| Weights: 
+				<a th:href="@{/weights/list.html}" th:title="weights">[Table]</a>
+				<a th:href="@{/weights/graph.html}" th:title="weights">[Graph]</a>
 			</div>
 		</div>
 	</nav>
