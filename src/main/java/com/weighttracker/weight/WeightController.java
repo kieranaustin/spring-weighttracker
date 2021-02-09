@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.weighttracker.helper.CsvWriter;
+
 import java.util.Map;
 import java.util.Collection;
-
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -54,9 +56,24 @@ public class WeightController
 		return "weights/weightList";
 	}
 
-	@GetMapping(path="/raw")
-	public @ResponseBody Iterable<Weight> getAllWeights()
+	@GetMapping(path="/raw/json")
+	public @ResponseBody Iterable<Weight> getAllWeightsJson()
 	{
 		return weightRepository.findAll();
+	}
+
+	@GetMapping(path="/raw/csv")
+	public @ResponseBody String getAllWeightsCsv()
+	{
+		String result = new String("empty, empty, 0.0");
+		try
+		{
+			result = CsvWriter.makeWeightCsvString(weightRepository.findAll());
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
