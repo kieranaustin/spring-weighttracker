@@ -19,7 +19,7 @@
 			<tr th:each="weight : ${weights.weights}">
 				<td>
 					<form action="#" th:action="@{/weights/remove/?weightId=} + ${weight.id}" method="post">
-						<button type="submit">-</button>
+						<button class="table-btn table-btn-del" type="submit">-</button>
 					</form>
 				</td>
 				<td th:text="${weight.date}"></td>
@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<form action="#" th:action="@{/weights/add}" method="post">
-					<td><button type="submit">+</button></td>
+					<td><button class="table-btn table-btn-add" type="submit">+</button></td>
 					<td><input autofocus th:name="date" type="text"/></td>
 					<td><input th:name="time" type="text"/></td>
 					<td><input th:name="weight" type="number" step="0.1" value="73.0"/></td>

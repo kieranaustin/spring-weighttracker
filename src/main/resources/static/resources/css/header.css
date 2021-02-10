@@ -4,22 +4,26 @@
 	--color-green: #2e5027;
 	--color-red: #6f000a;
 	--color-purple: #290b26;
-	--color-grey: #242424;
-	--color-light-grey: #535353;
-	--color-very-light-grey: #efefef;
+	--color-blue: #1483d6;
+	--color-dark-blue: #34348B;
+	--color-dark-grey: #242424;
+	--color-grey: #535353;
+	--color-light-grey: #efefef;
 	
-	--color-links-hover: var(--color-light-grey);
+	--color-links-hover: var(--color-grey);
 }
 
 body {
 	border: 0;
 	margin: 0;
 	padding: 0;
-	background-color: var(--color-very-light-grey);
+	background-color: var(--color-light-grey);
+	color: var(--color-dark-grey);
 }
 
 .container {
-	padding: 0px 50px 0px 50px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .nav-container {
@@ -29,11 +33,11 @@ body {
 }
 
 nav {
-	background-color: var(--color-grey);
-	color: white;
+	background-color: var(--color-dark-grey);
+	color: var(--color-light-grey);
 	height: 50px;
 	margin: 0px 0px 0px 0px;
-	border-bottom: 5px solid var(--color-red);
+	border-bottom: 5px solid var(--color-blue);
 	border: 0px 0px 0px 0px:
 }
 
@@ -59,15 +63,7 @@ nav {
 	height: 50px;
 	padding-bottom: 15px;
 	padding-top: 15px;
-	border-bottom: 5px solid var(--color-purple);
-}
-
-.nav-links a:active {
-	background-color: var(--color-links-hover);
-	height: 50px;
-	padding-bottom: 15px;
-	padding-top: 15px;
-	border-bottom: 5px solid var(--color-purple);
+	border-bottom: 5px solid var(--color-dark-blue);
 }
 
 .nav-logo {
@@ -84,4 +80,50 @@ nav {
 	width: 50px;
 	height: 50px;
 	display: block;
+}
+
+footer {
+	margin-top: 50px;
+}
+
+.footer-bar {
+	color: var(--color-light-grey);
+	border-top: 5px solid var(--color-green);
+	background-color: var(--color-grey);
+}
+
+.container-footer {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+.table-btn {
+	background-color: var(--color-light-grey);
+	border: 2px solid white;
+	color: white;
+	width: 25px;
+	height: 25px;
+	padding: 0;
+	margin: 2px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+.table-btn-del {
+	color: var(--color-red);
+	border: 2px solid var(--color-red);
+}
+
+.table-btn-del:hover {
+	border: 3px solid var(--color-red);
+}
+
+.table-btn-add {
+	color: var(--color-green);
+	border: 2px solid var(--color-green);
+}
+
+.table-btn-add:hover {
+	border: 3px solid var(--color-green);
 }
