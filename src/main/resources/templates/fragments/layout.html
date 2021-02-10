@@ -3,24 +3,31 @@
 
 <head>
 	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.png" />
+	<link rel="stylesheet" href="/resources/css/header.css" />
+	<style type="text/css">
+		@import "/resources/css/responsive.css" screen and (max-width: 768px);
+	</style>
 	<title>WeightTracker</title>
 </head>
 
 <body>
 
-	<nav>
-		<div style="background:gray;color:white;height:50px;">
-			<div style="padding:15px;">
-				<a th:href="@{/}" th:title="home">[Home]</a>
-				<a th:href="@{/greeting/World}" th:title="greeting">[Greeting]</a>
-				| Weights: 
-				<a th:href="@{/weights/list.html}" th:title="weights">[Table]</a>
-				<a th:href="@{/weights/graph.html}" th:title="weights">[Graph]</a>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container nav-container">
+			<div class="nav-logo">
+				<a th:href="@{/}" th:title="Home"><span></span></a>
+			</div>
+			<div class="nav-links">
+				<a th:href="@{/}" th:title="Home">Home</a>
+				<a th:href="@{/greeting/World}" th:title="Greeting">Greeting</a>
+				<a th:href="@{/weights/list.html}" title="Weights Table">Table</a>
+				<a th:href="@{/weights/graph.html}" title="Weights Graph">Graph</a>
 			</div>
 		</div>
 	</nav>
 	
-	<div>
+	<div class="container">
 		<th:block th:include="${template}" />
 	</div>
 
