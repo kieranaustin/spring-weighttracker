@@ -6,7 +6,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.png" />
 	<link rel="stylesheet" href="/resources/css/header.css" />
 	<style type="text/css">
-		@import "/resources/css/responsive.css" (max-width: 768px);
+		@import "/resources/css/responsive.css" (max-width: 980px);
 	</style>
 	<title>WeightTracker</title>
 </head>
@@ -20,9 +20,9 @@
 			</div>
 			<div class="nav-links">
 				<a th:href="@{/}" th:title="Home">Home</a>
-				<a th:href="@{/greeting/World}" th:title="Greeting">Greeting</a>
 				<a th:href="@{/weights/list.html}" title="Weights Table">Table</a>
 				<a th:href="@{/weights/graph.html}" title="Weights Graph">Graph</a>
+				<a th:href="@{/greeting/World}" th:title="Greeting">RESTful Greeting</a>
 			</div>
 		</div>
 	</nav>
