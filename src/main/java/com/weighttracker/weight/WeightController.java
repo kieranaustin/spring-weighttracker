@@ -27,16 +27,24 @@ public class WeightController
 	
 	@PostMapping("/add")
 	public String addNewWeight(
+			// TODO: set UI input forms to date/time and pass in here as date/time
 			@RequestParam String date, 
 			@RequestParam String time, 
 			@RequestParam float weight)
 	{
 		Weight w = new Weight();
-		w.setDate(LocalDate.parse(date));
-		w.setTime(LocalTime.parse(time));
-		w.setWeight(weight);
-		
-		weightRepository.save(w);
+		try 
+		{
+			w.setDate(LocalDate.parse(date));
+			w.setTime(LocalTime.parse(time));
+			w.setWeight(weight);
+			weightRepository.save(w);
+		} 
+		catch (Exception e)
+		{
+			// TODO: give feedback to user (i.e. red input form/text) instead of just redirecting
+			System.err.println("Wrong input format in Weight Table");
+		}
 		
 		return REDIRECT_WEIGHT_LIST;
 	}
