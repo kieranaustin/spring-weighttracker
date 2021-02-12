@@ -5,6 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Column;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,8 +18,13 @@ public class Weight
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
+	@Column(name = "date")
 	private LocalDate date;
+
+	@Column(name = "time")
 	private LocalTime time;
+
+	@Column(name = "weight")
 	private float     weight;
 
 	public Integer getId()
