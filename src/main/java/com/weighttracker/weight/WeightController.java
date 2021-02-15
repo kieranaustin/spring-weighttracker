@@ -1,7 +1,6 @@
 package com.weighttracker.weight;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.weighttracker.helper.CsvWriter;
 
 import java.util.Map;
-import java.util.Collection;
+import java.util.List;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -61,9 +60,7 @@ public class WeightController
 	@GetMapping("/list.html")
 	public String showWeightList(Map<String, Object> model)
 	{
-		Weights weights = new Weights();
-		Collection<Weight> weightCollection = this.weightRepository.findAllByOrderByDateAsc();
-		weights.getWeights().addAll(weightCollection);
+		List<Weight> weights = this.weightRepository.findAllByOrderByDateAsc();
 		model.put("weights",  weights);
 		return "weights/weightList";
 	}

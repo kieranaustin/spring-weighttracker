@@ -17,7 +17,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="weight : ${weights.weights}">
+				<tr th:each="weight : ${weights}">
 					<td>
 						<form action="#" th:action="@{/weights/remove/?weightId=} + ${weight.id}" method="post">
 							<button class="table-btn table-btn-del" type="submit">-</button>
