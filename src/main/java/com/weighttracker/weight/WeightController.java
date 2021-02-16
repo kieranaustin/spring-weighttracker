@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 import com.weighttracker.helper.CsvWriter;
 
@@ -35,9 +36,12 @@ public class WeightController
 	}
 
 	@PostMapping("/add")
-	public String addNewWeight(@Valid Weight weight)
+	public String addNewWeight(@Valid Weight weight, BindingResult result)
 	{
-		weightRepository.save(weight);
+		if(!result.hasErrors())
+		{
+			weightRepository.save(weight);
+		}
 		lastWeightEntered = weight;
 		
 		return REDIRECT_WEIGHT_LIST;
