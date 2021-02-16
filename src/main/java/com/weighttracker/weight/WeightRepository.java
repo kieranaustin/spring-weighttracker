@@ -9,4 +9,5 @@ import com.weighttracker.weight.Weight;
 public interface WeightRepository extends CrudRepository<Weight, Integer>
 {
 	public List<Weight> findAllByOrderByDateAsc();
+	public Weight findTopByOrderByDateDesc();
 }

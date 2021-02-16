@@ -20,7 +20,7 @@ public class CsvWriter
 				CSVPrinter csvPrinter = new CSVPrinter(
 						csvWriter, 
 						CSVFormat.DEFAULT
-							.withHeader( "date", "time", "weight" )
+							.withHeader( "date", "time", "value" )
 							.withRecordSeparator("\r\n"));
 		)
 		{
@@ -29,7 +29,7 @@ public class CsvWriter
 				csvPrinter.printRecord( 
 						weight.getDate(), 
 						weight.getTime(), 
-						weight.getWeight());
+						weight.getValue());
 			}
 		}
 

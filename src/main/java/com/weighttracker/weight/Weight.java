@@ -2,30 +2,42 @@ package com.weighttracker.weight;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.DecimalMin;
 
 @Entity
 @Table(name = "weights")
-public class Weight
+public class Weight 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name = "date")
+	@DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
+	@NotNull
 	private LocalDate date;
 
 	@Column(name = "time")
+	@DateTimeFormat(iso = ISO.TIME, pattern = "HH:mm")
+	@NotNull
 	private LocalTime time;
 
-	@Column(name = "weight")
-	private float     weight;
+	@Column(name = "value")
+	@DecimalMin("0.1")
+	@NotNull
+	private float     value;
 
 	public Integer getId()
 	{
@@ -37,14 +49,14 @@ public class Weight
 		this.id = id;
 	}
 	
-	public float getWeight()
+	public float getValue()
 	{
-		return weight;
+		return value;
 	}
 	
-	public void setWeight(float weight)
+	public void setValue(float value)
 	{
-		this.weight = weight;
+		this.value = value;
 	}
 	
 	public LocalDate getDate()

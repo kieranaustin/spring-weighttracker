@@ -37,7 +37,7 @@ class WeightControllerTests
 		weight.setId(WEIGHT_ID);
 		weight.setDate(LocalDate.of(2002, 12, 31));
 		weight.setTime(LocalTime.of(9, 32));
-		weight.setWeight(76.5f);
+		weight.setValue(76.5f);
 	}
 
 	@Test

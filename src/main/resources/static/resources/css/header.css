@@ -159,6 +159,10 @@ footer {
 	border: 3px solid var(--color-green);
 }
 
+.table-input {
+	height: 25px;
+}
+
 #dygraph-div {
 	width: 97%;
 	height: 450px;

@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.PostConstruct;
+import javax.validation.Valid;
+
 import com.weighttracker.helper.CsvWriter;
 
 import java.util.Map;
 import java.util.List;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Controller
 @RequestMapping("/weights")
@@ -23,32 +24,25 @@ public class WeightController
 	@Autowired
 	private WeightRepository weightRepository;
 	
+	private Weight lastWeightEntered;
+	
 	private final String REDIRECT_WEIGHT_LIST = "redirect:/weights/list.html";
 	
-	@PostMapping("/add")
-	public String addNewWeight(
-			// TODO: set UI input forms to date/time and pass in here as date/time
-			@RequestParam String date, 
-			@RequestParam String time, 
-			@RequestParam float weight)
+	@PostConstruct
+	private void setupWeightController()
 	{
-		Weight w = new Weight();
-		try 
-		{
-			w.setDate(LocalDate.parse(date));
-			w.setTime(LocalTime.parse(time));
-			w.setWeight(weight);
-			weightRepository.save(w);
-		} 
-		catch (Exception e)
-		{
-			// TODO: give feedback to user (i.e. red input form/text) instead of just redirecting
-			System.err.println("Wrong input format in Weight Table");
-		}
+		lastWeightEntered = weightRepository.findTopByOrderByDateDesc();
+	}
+
+	@PostMapping("/add")
+	public String addNewWeight(@Valid Weight weight)
+	{
+		weightRepository.save(weight);
+		lastWeightEntered = weight;
 		
 		return REDIRECT_WEIGHT_LIST;
 	}
-	
+
 	@PostMapping("/remove")
 	public String deleteWeight(@RequestParam Integer weightId)
 	{
@@ -62,6 +56,8 @@ public class WeightController
 	{
 		List<Weight> weights = this.weightRepository.findAllByOrderByDateAsc();
 		model.put("weights",  weights);
+		model.put("lastWeightEntered", lastWeightEntered);
+
 		return "weights/weightList";
 	}
 	

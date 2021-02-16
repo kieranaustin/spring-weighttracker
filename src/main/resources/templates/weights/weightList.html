@@ -25,14 +25,14 @@
 					</td>
 					<td th:text="${weight.date}"></td>
 					<td th:text="${weight.time}"></td>
-					<td th:text="${weight.weight}"></td>
+					<td th:text="${weight.value}"></td>
 				</tr>
 				<tr>
-					<form action="#" th:action="@{/weights/add}" method="post">
+					<form action="#" th:object="${lastWeightEntered}" th:action="@{/weights/add}" method="post">
 						<td><button class="table-btn table-btn-add" type="submit">+</button></td>
-						<td><input autofocus th:name="date" type="text" placeholder="Format: 2020-12-31" /></td>
-						<td><input th:name="time" type="text" placeholder="Format: 23:59"/></td>
-						<td><input th:name="weight" type="number" step="0.1" value="73.0"/></td>
+						<td><input class="table-input" autofocus th:field="*{date}" th:name="date" th:type="date" placeholder="Format: 2020-12-31" /></td>
+						<td><input class="table-input" th:field="*{time}" th:name="time" th:type="time" placeholder="Format: 23:59"/></td>
+						<td><input class="table-input" th:field="*{value}" th:name="value" th:type="number" th:step="0.1" th:value="73.0"/></td>
 					</form>
 				</tr>
 			</tbody>
