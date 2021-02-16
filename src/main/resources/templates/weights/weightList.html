@@ -30,9 +30,9 @@
 				<tr>
 					<form action="#" th:object="${lastWeightEntered}" th:action="@{/weights/add}" method="post">
 						<td><button class="table-btn table-btn-add" type="submit">+</button></td>
-						<td><input class="table-input" autofocus th:field="*{date}" th:name="date" th:type="date" placeholder="Format: 2020-12-31" /></td>
-						<td><input class="table-input" th:field="*{time}" th:name="time" th:type="time" placeholder="Format: 23:59"/></td>
-						<td><input class="table-input" th:field="*{value}" th:name="value" th:type="number" th:step="0.1" th:value="73.0"/></td>
+						<td><input class="table-input" autofocus th:field="*{date}" name="date" type="date" placeholder="Format: 2020-12-31" /></td>
+						<td><input class="table-input" th:field="*{time}" name="time" type="time" placeholder="Format: 23:59"/></td>
+						<td><input class="table-input" th:field="*{value}" name="value" type="number" step="0.1" min="0.1" value="73.0"/></td>
 					</form>
 				</tr>
 			</tbody>
