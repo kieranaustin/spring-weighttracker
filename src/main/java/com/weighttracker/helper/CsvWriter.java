@@ -17,19 +17,19 @@ public class CsvWriter
 
 		try 
 		(
-				CSVPrinter csvPrinter = new CSVPrinter(
-						csvWriter, 
-						CSVFormat.DEFAULT
-							.withHeader( "date", "time", "value" )
-							.withRecordSeparator("\r\n"));
+			CSVPrinter csvPrinter = new CSVPrinter(
+				csvWriter, 
+				CSVFormat.DEFAULT
+					.withHeader( "date", "time", "value" )
+					.withRecordSeparator("\r\n"));
 		)
 		{
 			for(Weight weight : weights)
 			{
 				csvPrinter.printRecord( 
-						weight.getDate(), 
-						weight.getTime(), 
-						weight.getValue());
+					weight.getDate(), 
+					weight.getTime(), 
+					weight.getValue());
 			}
 		}
 

@@ -48,7 +48,7 @@ public class WeightController
 	}
 
 	@PostMapping("/remove")
-	public String deleteWeight(@RequestParam Integer weightId)
+	public String removeWeight(@RequestParam Integer weightId)
 	{
 		weightRepository.deleteById(weightId);
 		
@@ -80,15 +80,14 @@ public class WeightController
 	@GetMapping(path="/raw/csv")
 	public @ResponseBody String getAllWeightsCsv()
 	{
-		String result = new String("empty, empty, 0.0");
 		try
 		{
-			result = CsvWriter.makeWeightCsvString(weightRepository.findAllByOrderByDateAsc());
-		} catch (IOException e)
+			return CsvWriter.makeWeightCsvString(weightRepository.findAllByOrderByDateAsc());
+		} 
+		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return "";
 		}
-		return result;
 	}
 }
